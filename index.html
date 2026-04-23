@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undangan Digital</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+h1 {
+  font-size: 40px;
+  text-shadow: 0 0 15px rgba(255,105,180,0.8);
+}
+      background: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* overlay gelap */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: -1;
+    }
+
+    /* container premium */
+    .container {
+      padding: 40px 20px;
+      margin: 30px;
+
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      font-size: 40px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+
+    .names {
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+
+    .date {
+      font-size: 18px;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+
+    img {
+      border-radius: 15px;
+      margin: 15px 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .btn {
+      padding: 12px 20px;
+      background: #ff6b81;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+    }
+
+    .btn:hover {
+      background: #ff4d6d;
+    }
+
+    input, textarea {
+      padding: 10px;
+      width: 80%;
+      margin: 5px 0;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .rsvp {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🎵 MUSIK -->
+  <audio id="musik" loop>
+    <source src="music.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="container">
+
+    <h1>Undangan Pernikahan</h1>
+
+    <div class="names">Muslim & Salma</div>
+
+    <!-- 📸 FOTO -->
+    <img src="zzzz.jpg" width="220">
+
+    <div class="date">Sabtu, 19 Juni 2028</div>
+
+    <!-- 🔘 TOMBOL -->
+    <button class="btn" onclick="toggleMusic()">🎵 Putar / Pause Musik</button>
+
+    
+    <div class="video-wrapper">
+  <video controls>
+    <source src="video.mp4" type="video/mp4">
+    Browser kamu tidak mendukung video.
+  </video>
+</div>
+
+    <button class="btn" onclick="scrollToRSVP()">Konfirmasi Kehadiran</button>
+
+    <!-- RSVP -->
+    <div class="rsvp" id="rsvp">
+      <h2>RSVP</h2>
+
+      <input type="text" id="nama" placeholder="Nama Kamu"><br>
+      <textarea id="pesan" placeholder="Ucapan / Konfirmasi"></textarea><br>
+
+      <button class="btn" onclick="kirim()">Kirim</button>
+
+      <p id="hasil"></p>
+    </div>
+
+  </div>
+
+  <script>
+    let musik = document.getElementById("musik");
+
+    function toggleMusic() {
+      if (musik.paused) {
+        musik.play();
+      } else {
+        musik.pause();
+      }
+    }
+
+    function scrollToRSVP() {
+      document.getElementById("rsvp")
+        .scrollIntoView({ behavior: "smooth" });
+    }
+
+    function kirim() {
+      let nama = document.getElementById("nama").value;
+      let pesan = document.getElementById("pesan").value;
+
+      if (nama === "" || pesan === "") {
+        document.getElementById("hasil").innerText =
+          "Isi dulu semua data!";
+      } else {
+        document.getElementById("hasil").innerText =
+          "Terima kasih " + nama + ", pesan kamu sudah terkirim!";
+      }
+    }
+  </script>
+
+</body>
+</html>
